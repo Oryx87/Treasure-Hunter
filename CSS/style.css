@@ -1,0 +1,32 @@
+#title{
+    font-size: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color:black;
+}
+
+body{
+    font-family:"Palatino Linotype", Palatino, Georgia, serif;
+    background-color: burlywood;
+    text-align: center;
+}
+
+#map{
+    width: 60%;
+    height: 60%;
+    max-width: 1000px;
+    max-height: 1000px;
+    margin: auto;
+    display: flex;
+    cursor: pointer;
+}
+
+#description{
+    font-size: 30px;
+}
+
+#nbClick{
+    font-size: 30px;
+    font-style: italic;
+}
+
