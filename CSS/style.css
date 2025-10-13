@@ -18,7 +18,7 @@ body{
     max-height: 1000px;
     margin: auto;
     display: flex;
-    cursor: pointer;
+    cursor: url('../images/cursor.png'),auto;
 }
 
 #description{
@@ -26,6 +26,11 @@ body{
 }
 
 #nbClick{
+    font-size: 30px;
+    font-style: italic;
+}
+
+#nbClickLeft{
     font-size: 30px;
     font-style: italic;
 }
