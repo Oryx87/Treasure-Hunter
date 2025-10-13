@@ -14,36 +14,63 @@ body{
     text-align: center;
 }
 
-#map{
-    width: 60%;
-    height: 60%;
-    max-width: 1000px;
-    max-height: 1000px;
-    margin: auto;
-    display: flex;
-    cursor: url('../images/cursor.png'),auto;
+#game-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+#map-wrapper{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+#carte{
+  width: 1000px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  cursor: url('../images/cursor.png'), auto;
 }
 
 #description{
     font-size: 30px;
 }
 
+#click-info{
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 30px); /* 30px d'espace à droite de la carte */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: nowrap;
+  text-align: center;
+}
+
 #nbClick{
     font-size: 30px;
     font-style: italic;
-    margin-bottom: 2px;
+    margin: 0;
 }
 
 #nbClickLeft{
     font-size: 30px;
     font-style: italic;
+    margin: 6px;
+    text-align: center;
+    width: 100%;
 }
 
 
 footer{
     background-color: darkcyan;
     width: 100%;
-    height: 5%;
+    height: 8%;
     position: fixed;
     bottom: 0;
     left: 0;
