@@ -14,8 +14,9 @@ let nbClick = 15
 nbClickLeft.innerHTML = `${nbClick} / 15`
 
 let tresor = [Math.round(Math.random() * canvas.width), Math.round(Math.random() * canvas.height)]
-console.log("Position Tresor : " + tresor[0] + " " + tresor[1]) 
+console.log("Position Tresor : " + tresor[0] + " " + tresor[1])
 
+const indice = document.getElementById("description")
 
 function clickMap(){
     canvas.addEventListener('click', (event) =>{
@@ -42,13 +43,13 @@ function clickMap(){
         if (distance < 10){
             alert("Bravo, vous avez trouvé le trésor !")
         } else if (distance < 30 && distance > 10){
-            console.log("Brûlant !")
+            indice.innerHTML = `Brûlant !`
         } else if (distance < 50 && distance > 30){
-            console.log("Chaud")
+            indice.innerHTML = `Chaud`
         } else if (distance < 100 && distance > 50){
-            console.log("Tiède")
+            indice.innerHTML = `Tiède`
         } else{
-            console.log("Glacé")
+            indice.innerHTML = `Glacé`
         }
     })
 }
