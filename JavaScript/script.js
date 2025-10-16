@@ -60,4 +60,14 @@ btnRelaunch.addEventListener("click", () =>{
     window.location.reload();
 })
 
+function drawTreasureChest(x, y) {
+    let chestPosImg = new Image();
+    chestPosImg.src = './images/PositionTresor.png';
+
+    chestPosImg.onload = () => {
+        ctx.drawImage(chestPosImg, x - 25, y - 25, 50, 50);
+    };
+}
+
 clickMap();
+drawTreasureChest(tresor[0],tresor[1])
