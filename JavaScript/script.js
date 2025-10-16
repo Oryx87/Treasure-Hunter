@@ -54,4 +54,10 @@ function clickMap(){
     })
 }
 
+const btnRelaunch= document.getElementById("btn-relaunch")
+
+btnRelaunch.addEventListener("click", () =>{
+    window.location.reload();
+})
+
 clickMap();
