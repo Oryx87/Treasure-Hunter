@@ -25,6 +25,9 @@ function clickMap(){
         nbClick = nbClick - 1
         nbClickLeft.innerHTML = `${nbClick} / 15`
 
+        const creuserSound = new Audio('./sons/creuser.mp3')
+        const winSound = new Audio('./sons/victoire.mp3')
+        const loseSound = new Audio('./sons/defaite.mp3')
 
         const rect = canvas.getBoundingClientRect()
         const scaleX = canvas.width / rect.width;
@@ -41,19 +44,25 @@ function clickMap(){
 
         if (distance < 10){
             indice.innerHTML = `😎 Bravo, vous avez trouvé le trésor ! 💯`
+            winSound.play();
             drawTreasureChestAnimated(tresor[0], tresor[1]);
         } else if (distance < 30 && distance > 10){
             indice.innerHTML = `🔥🔥 Brûlant ! 🔥🔥`
+            creuserSound.play();
         } else if (distance < 50 && distance > 30){
             indice.innerHTML = `🔥 Chaud 🔥`
+            creuserSound.play();
         } else if (distance < 100 && distance > 50){
             indice.innerHTML = `❄️ Tiède ❄️`
+            creuserSound.play();
         } else{
             indice.innerHTML = `🥶 Glacé 🥶`
+            creuserSound.play();
         }
 
         if (nbClick === 0 && distance >= 10) {
             indice.innerHTML = `😢 Vous avez échoué ! 👎`;
+            loseSound.play();
             drawTreasureChestAnimated(tresor[0], tresor[1]);
         }
     })
