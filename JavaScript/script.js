@@ -40,21 +40,21 @@ function clickMap(){
         console.log(distance)
 
         if (distance < 10){
-            indice.innerHTML = `Bravo, vous avez trouvé le trésor ! `
-            drawTreasureChest(tresor[0], tresor[1]);
+            indice.innerHTML = `😎 Bravo, vous avez trouvé le trésor ! 💯`
+            drawTreasureChestAnimated(tresor[0], tresor[1]);
         } else if (distance < 30 && distance > 10){
-            indice.innerHTML = `Brûlant !`
+            indice.innerHTML = `🔥🔥 Brûlant ! 🔥🔥`
         } else if (distance < 50 && distance > 30){
-            indice.innerHTML = `Chaud`
+            indice.innerHTML = `🔥 Chaud 🔥`
         } else if (distance < 100 && distance > 50){
-            indice.innerHTML = `Tiède`
+            indice.innerHTML = `❄️ Tiède ❄️`
         } else{
-            indice.innerHTML = `Glacé`
+            indice.innerHTML = `🥶 Glacé 🥶`
         }
 
         if (nbClick === 0 && distance >= 10) {
-            indice.innerHTML = `😢 Vous avez échoué !`;
-            drawTreasureChest(tresor[0], tresor[1]);
+            indice.innerHTML = `😢 Vous avez échoué ! 👎`;
+            drawTreasureChestAnimated(tresor[0], tresor[1]);
         }
     })
 }
@@ -65,6 +65,7 @@ btnRelaunch.addEventListener("click", () =>{
     window.location.reload();
 })
 
+/*
 function drawTreasureChest(x, y) {
     let chestPosImg = new Image();
     chestPosImg.src = './images/PositionTresor.png';
@@ -73,6 +74,47 @@ function drawTreasureChest(x, y) {
         ctx.drawImage(chestPosImg, tresor[0]-25, tresor[1]-25,50,50);
     };
 }
+*/
+
+let animating = false;
+let scale = 1;
+let growing = true;
+
+function drawTreasureChestAnimated(x, y) {
+    const chestPosImg = new Image();
+    chestPosImg.src = './images/PositionTresor.png';
+
+    chestPosImg.onload = () => {
+        animating = true;
+
+        function animate() {
+            if (!animating) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            if (growing) {
+                scale += 0.01;
+                if (scale >= 1.5) growing = false;
+            } else {
+                scale -= 0.01;
+                if (scale <= 1) growing = true;
+            }
+
+            ctx.globalAlpha = 0.8 + 0.2 * Math.sin(Date.now() / 200);
+            
+            const size = 50 * scale;
+            ctx.drawImage(chestPosImg, x - size / 2, y - size / 2, size, size);
+
+            ctx.globalAlpha = 1;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    };
+}
+
 
 
 clickMap();
