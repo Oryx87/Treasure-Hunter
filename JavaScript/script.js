@@ -25,13 +25,15 @@ function clickMap(){
         nbClick = nbClick - 1
         nbClickLeft.innerHTML = `${nbClick} / 15`
 
-        if (nbClick == 0){
-            alert("Vous avez échoué !")
+        if (nbClick ){
+            indice.innerHTML = `Vous avez échouée !`
         }
 
         const rect = canvas.getBoundingClientRect()
-        const x = event.clientX - rect.left
-        const y = event.clientY - rect.top
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = (event.clientY - rect.top) * scaleY;
         console.log("Position clic : " + x + " " + y)
 
         const dx = x - tresor[0]
@@ -41,7 +43,7 @@ function clickMap(){
         console.log(distance)
 
         if (distance < 10){
-            alert("Bravo, vous avez trouvé le trésor !")
+            indice.innerHTML = `Bravo, vous avez trouvé le trésor ! `
         } else if (distance < 30 && distance > 10){
             indice.innerHTML = `Brûlant !`
         } else if (distance < 50 && distance > 30){
@@ -65,7 +67,7 @@ function drawTreasureChest(x, y) {
     chestPosImg.src = './images/PositionTresor.png';
 
     chestPosImg.onload = () => {
-        ctx.drawImage(chestPosImg, x - 25, y - 25, 50, 50);
+        ctx.drawImage(chestPosImg, tresor[0]-25, tresor[1]-25,50,50);
     };
 }
 

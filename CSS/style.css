@@ -33,7 +33,7 @@ body{
   max-width: 100%;
   height: auto;
   display: block;
-  cursor: url('../images/cursor.png'), auto;
+  cursor: url('../images/cursor.png')16 16, auto;
 }
 
 #description{
