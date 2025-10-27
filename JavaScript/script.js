@@ -25,9 +25,6 @@ function clickMap(){
         nbClick = nbClick - 1
         nbClickLeft.innerHTML = `${nbClick} / 15`
 
-        if (nbClick ){
-            indice.innerHTML = `Vous avez échouée !`
-        }
 
         const rect = canvas.getBoundingClientRect()
         const scaleX = canvas.width / rect.width;
@@ -44,6 +41,7 @@ function clickMap(){
 
         if (distance < 10){
             indice.innerHTML = `Bravo, vous avez trouvé le trésor ! `
+            drawTreasureChest(tresor[0], tresor[1]);
         } else if (distance < 30 && distance > 10){
             indice.innerHTML = `Brûlant !`
         } else if (distance < 50 && distance > 30){
@@ -52,6 +50,11 @@ function clickMap(){
             indice.innerHTML = `Tiède`
         } else{
             indice.innerHTML = `Glacé`
+        }
+
+        if (nbClick === 0 && distance >= 10) {
+            indice.innerHTML = `😢 Vous avez échoué !`;
+            drawTreasureChest(tresor[0], tresor[1]);
         }
     })
 }
@@ -71,5 +74,5 @@ function drawTreasureChest(x, y) {
     };
 }
 
+
 clickMap();
-drawTreasureChest(tresor[0],tresor[1])
